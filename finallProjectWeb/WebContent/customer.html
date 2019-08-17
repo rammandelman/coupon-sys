@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="windows-1255">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insert title here</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="NewCss.css" />
+
+</head>
+<body>
+
+	<p style="text-align: center">
+		<font size="20" color="blue"> wellcome customer.</font>
+	</p>
+		<a>Checkout Page</a>
+<form action="LogoutServlet" method="post">
+<input type="submit" value="Logout" >
+</form>
+		<hr>
+	<div id="cust-functions">
+	cust-functions
+	
+			<h2 style="color: blue;">purchase coupon</h2>
+	<br>
+	<input id="couponID-to-purchase" placeholder="coupon ID" />
+	  <input id="custID-purchase" placeholder="your customer ID" />
+	<button id="purchase" class="button" onClick="purchase()">purchase!</button>
+	<ul id="coupon"></ul>			
+			
+			<br><hr>
+			
+			<h2 style="color: blue;">show all coupons</h2>
+		<br>
+		<button id="getAllCoupons" class="button"
+			onClick="getAllCoupons()">Show all coupons</button>
+		<div id="all-coupons-lists"></div>
+		<br><hr>
+		
+			<br>
+			<h2 style="color: blue;">create customer</h2>
+			<br>
+	        <input id="create-cust-id" placeholder="new cust ID" /> 
+			<input id="create-cust-CUST_NAME" placeholder="new CUST_NAME" /> 
+			<input id="create-cust-PASSWORD" placeholder="new cust password" />
+
+			<button onclick="createCustomer()">
+				<br> create customer!
+			</button>
+			<ul id="created-customer"></ul>
+			<br>
+			<hr>
+			
+			<h2 style="color: blue;">show all customers</h2>
+		<br>
+		<button id="getAllCustomers" class="button"
+			onClick="getAllCustomers()">Show all customers</button>
+		<div id="all-cust-lists"></div>
+				<hr>
+				
+		<h2 style="color: blue;">show me all the coupons that i have purchased</h2>
+		<br> <input id="purchased-coupon-custID" placeholder="your customer ID" />
+		<button id="getCoupons" class="button" onClick="getPurchasedCoupon()">Show
+			coupons that i have purchaed</button>	
+		<div id="purchased-coupon-list"></div>
+		<hr><br>
+		
+		<h2 style="color: blue;">update cust filed</h2>
+		<br>
+		<h2>enter the id of the cust that you want to change</h2>
+		<br> <input id="cust-id-input-to-update" placeholder="cust ID" />
+		<h2>select the filed you want to change</h2>
+		<select id="cust-filedToChange" name="type">
+			<option id="cust-id-update" value="custID">custID</option>
+			<option id="cust-name-update" value="CUST_NAME">CUST_NAME</option>
+			<option id="cust-password-to-update" value="password">password</option>
+		</select> <br>
+		<h2>enter new value:</h2>
+		<input id="cust-filed-newValue" placeholder="new value" />
+		<button id="updaetCustomer" class="button" onClick="updaetCustomer()">update
+			customer</button>
+
+		<ul id="updated-cust"></ul>
+		<br><hr>
+		
+		<h2 style="color: blue;">show cust by id</h2>
+		<br> <input id="cust-id-input" placeholder="customer ID" />
+		<button id="showCust" class="button" onClick="getCustomer()">Show
+			cust by id</button>
+		<ul id="cust-by-id"></ul>
+		<br><hr>
+		
+		<h1>enter customer id to remove from system</h1>
+		<input id="custID-to-remove" placeholder=" customer ID" />
+
+		<button onclick="removeCustomer()">
+			<br> remove customer!
+		</button>
+		<br>
+		
+		<h2 style="color: blue;">show me all the coupons that i have purchased by type</h2>
+		<br> <input id="purchased-coupon-by-type-custID" placeholder="your customer ID" />
+		<select
+			id="search-purchased-CouponType" name="CouponType">
+			<option id="search-purchased-CouponType-tech" value="tech">tech</option>
+			<option id="search-purchased-CouponType-food" value="food">food</option>
+			<option id="search-purchased-CouponType-entertainment" value="entertainment">entertainment</option>
+			<option id="search-purchased-CouponType-shooping" value="shooping">shooping</option>
+			<option id="search-purchased-CouponType-kids" value="kids">kids</option>
+		</select>
+		<button id="getPurchasedCouponByType" class="button" onClick="getPurchasedCouponByType()">Show
+			coupons that i have purchaed</button>	
+		<div id="purchased-coupon-by-type-list"></div>
+		
+		<hr><br>
+
+		<h2 style="color: blue;">show me all the coupons that i have purchased by price</h2>
+		<br> <input id="purchased-coupon-by-price-custID" placeholder="your customer ID" />
+		<input id="purchased-coupon-by-price-price" placeholder="price example: 1.1" />
+		
+		<button id="getPurchasedCouponByPrice" class="button" onClick="getPurchasedCouponByPrice()">Show
+			coupons that i have purchaed</button>	
+		<div id="purchased-coupon-by-price-list"></div>
+		<hr>
+		</div>
+	<script type="text/javascript" src="bla.js">
+
+	</script>
+</body>
+
+</html>

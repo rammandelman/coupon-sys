@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="windows-1255">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insert title here</title>
+
+<script src="bla.js">
+	</script>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="NewCss.css" />
+
+</head>
+<body>
+	<p style="text-align: center">
+		<font size="20" color="blue"> wellcome user admin.</font>
+	</p>
+	<a>Checkout Page</a>
+<form action="LogoutServlet" method="post">
+<input type="submit" value="Logout" >
+</form>
+<hr><br>
+<a href="adminreports.html">admin reports</a>
+<a href="mobiletest.html">mobiletest</a>
+<hr><br>
+	<button onclick="switchContent('admin')">admin functions</button>
+	<button onclick="switchContent('comp')">comp functions</button>
+	<button onclick="switchContent('cust')">cust functions</button>
+	<div id="admin-functions" class="hide">
+		admin-functions <br> <br>
+			
+		<br><hr>
+		
+		<br><hr>
+		<h2 style="color: blue;">shut system down. close all connections and stop the daily experation task!!!</h2>
+		<button id="shutDown" class="button"
+			onClick="shutDown()">Show down system</button>
+			<h3>the number of open connections after shut down is:</h3>
+			<ul id="number-of-open-connections-afterShutDown"></ul>
+			
+		<br><hr>
+		
+		<h2 style="color: blue;">show number of open connections</h2>
+		<button id="checkConnections" class="button"
+			onClick="checkConnections()">show connections count</button>
+			<h3>the number of open connections after shut down is:</h3>
+			<ul id="number-of-open-connections"></ul>
+			
+		<br><hr>
+		<h2 style="color: blue;">show all companies</h2>
+		<br>
+		<button id="getAllCompanies" class="button"
+			onClick="getAllCompanies()">Show all companies</button>
+		<div id="all-comp-lists"></div>
+		
+		<hr>
+		<h2 style="color: blue;">show all customers</h2>
+		<br>
+		<button id="getAllCustomers" class="button"
+			onClick="getAllCustomers()">Show all customers</button>
+		<div id="all-cust-lists"></div>
+		
+		
+	</div>
+
+
+	<div id="comp-functions" class="hide">
+		comp-functions <br>
+		
+		 <input id="companieID"
+			placeholder="new Company ID" /> <input id="COMP_NAME"
+			placeholder="new COMP_NAME" /> <input id="EMAIL"
+			placeholder="new comp EMAIL" /> <input id="Password"
+			placeholder="new comp Password" />
+		<button onclick="createCompany()">
+			<br> create company!
+		</button>
+		  
+		<ul id="newComp-list"></ul>
+		
+		<hr>
+		<h2 style="color: blue;">show comp by id</h2>
+		<br> <input id="comp-id-input" placeholder="Company ID" />
+		<button id="showComp" class="button" onClick="getCompany()">Show
+			comp by id</button>
+		<ul id="comp-list"></ul>
+		<br>
+		<hr>
+		
+		<h2 style="color: blue;">show coupon by id</h2>
+		<br> <input id="coupon-serach-id-input" placeholder="coupon ID" />
+		<button id="getCoupon" class="button" onClick="getCoupon()">Show
+			coupon by id</button>
+		<ul id="coupon-search-list"></ul>
+		<br>
+		<hr>
+
+		<h2 style="color: blue;">show all coupons for a company</h2>
+		<br> <input id="couponOf-companieID" placeholder="Company ID" />
+		<button id="showCoupons" class="button" onClick="getCoupons()">Show
+			coupons</button>
+		<div id="coupons-listfor-comp"></div>
+		<hr>
+		
+		<h2 style="color: blue;">show all coupons</h2>
+		<br>
+		<button id="getAllCoupons" class="button"
+			onClick="getAllCoupons()">Show all coupons</button>
+		<div id="all-coupons-lists"></div>
+		<br><hr>
+		
+		<h2 style="color: blue;">show coupons by type</h2>
+		<br>
+		<select
+			id="search-CouponType" name="CouponType">
+			<option id="search-CouponType-tech" value="tech">tech</option>
+			<option id="search-CouponType-food" value="food">food</option>
+			<option id="search-CouponType-entertainment" value="entertainment">entertainment</option>
+			<option id="search-CouponType-shooping" value="shooping">shooping</option>
+			<option id="search-CouponType-kids" value="kids">kids</option>
+		</select>
+		<button id="getCouponByType" class="button"
+			onClick="getCouponByType()">Show all coupons by type</button>
+		<div id="all-coupons-by-type-lists"></div>
+		<br><hr>
+		
+	
+		<h1>enter company id to remove from system</h1>
+		<input id="companieID-to-remove" placeholder="new Company ID" />
+
+		<button onclick="removeCompany()">
+			<br> removeCompany!
+		</button>
+		<hr color="red">
+		
+		<br>
+		<h1>enter coupon id to remove from system</h1>
+		<input id="couponID-to-remove" placeholder="couopn ID" />
+
+		<button onclick="removeCoupon()">
+			<br> removeCompany!
+		</button>
+		<hr color="red">
+		
+		
+		<h2 style="color: blue;">update Company filed</h2>
+		<br>
+		<h2>enter the id of the companie that you want to change</h2>
+		<br> <input id="comp-id-input-to-update" placeholder="Company ID" />
+		<h2>select the filed you want to change</h2>
+		<select id="filedToChange" name="type">
+			<option id="comp-id-update" value="companieID">companieID</option>
+			<option id="comp-name-update" value="COMP_NAME">COMP_NAME</option>
+			<option id="EMAIL-to-update" value="EMAIL">EMAIL</option>
+			<option id="password-to-update" value="password">password</option>
+		</select> <br>
+		<h2>enter new value:</h2>
+		<input id="comp-filed-newValue" placeholder="new value" />
+		<button id="updateCompany" class="button" onClick="updateCompany()">update
+			Company</button>
+
+		<ul id="updated-comp-list"></ul>
+		<br><hr>
+		
+			<h2 style="color: blue;">update coupon filed</h2>
+		<br>
+		<h2>enter the id of the coupon that you want to change</h2>
+		<br> <input id="coupon-id-input-to-update" placeholder="Coupon ID" />
+		
+		<h2>select the filed you want to change</h2>
+		<select id="couponFiledToChange" name="couponFiledToChange" onchange="changeFiledOption(this.value)">
+			<option id="compID-name-update" value="companieID">companieID</option>
+			<option id="coupon-TITLE-to-update" value="TITLE">TITLE</option>
+			<option id="coupon-START_DATE-to-update" value="START_DATE">START_DATE</option>
+			<option id="coupon-END_DATE-to-update" value="END_DATE">END_DATE</option>
+			<option id="coupon-AMOUNT-to-update" value="AMOUNT">AMOUNT</option>
+			<option id="coupon-MESSAGE-to-update" value="MESSAGE">MESSAGE</option>
+			<option id="coupon-PRICE-to-update" value="PRICE" >PRICE</option>
+			<option id="coupon-IMAGE-to-update" value="IMAGE">IMAGE</option>
+			<option id="coupon-type-to-update" value="type">type</option>
+		</select> <br>
+		<div id="string-filed" class="hide">
+		<h2>enter new value:</h2>
+		<input id="coupon-filed-newValue" placeholder="new value" />
+		<button id="updateCoupon" class="button" onClick="updateCoupon()">update
+			coupn</button>
+		</div>
+		<div id="coupon-enum-filed" class="hide">
+		<h2>select new value:</h2>
+		<select
+			id="update-CouponType" name="CouponType">
+			<option id="updated-CouponType-tech" value="tech">tech</option>
+			<option id="updated-CouponType-food" value="food">food</option>
+			<option id="updated-CouponType-entertainment" value="entertainment">entertainment</option>
+			<option id="updated-CouponType-shooping" value="shooping">shooping</option>
+			<option id="updated-CouponType-kids" value="kids">kids</option>
+		</select> <button id="updateCoupon" class="button" onClick="updateCoupon()">update
+			coupn</button>
+			
+		</div>
+		<ul id="updated-coupon-list"></ul>
+		
+		<br><hr>
+		
+		<h2 style="color: blue;">create coupon</h2>
+		<br> <input id="newCoupon-couponID" placeholder="new coupon ID" />
+		<input id="newCoupon-companieID" placeholder="companieID" /> <input
+			id="newCoupon-TITLE" placeholder="newCoupon-TITLE" />
+		<h2>for the dates USE ONLY YYYY-MM-DD FORMAT!!</h2>
+		<input id="START_DATE"
+			placeholder="START_DATE USE ONLY YYYY-MM-DD FORMAT!!" /> <input
+			id="END_DATE" placeholder="END_DATE USE ONLY YYYY-MM-DD FORMAT!!" />
+		<input id="newCoupon-amount" placeholder="amount" /> <input
+			id="newCoupon-MESSAGE" placeholder="MESSAGE" /> <input
+			id="newCoupon-PRICE" placeholder="PRICE" /> <input
+			id="newCoupon-IMAGE" placeholder="IMAGE" /> <select
+			id="created-CouponType" name="CouponType">
+			<option id="created-CouponType-tech" value="tech">tech</option>
+			<option id="created-CouponType-food" value="food">food</option>
+			<option id="created-CouponType-entertainment" value="entertainment">entertainment</option>
+			<option id="created-CouponType-shooping" value="shooping">shooping</option>
+			<option id="created-CouponType-kids" value="kids">kids</option>
+		</select>
+		<button id="createCoupon" class="button" onClick="createCoupon()">create coupon</button>
+		<ul id="created-coupon"></ul>
+
+		<hr>
+	</div>
+	<div id="cust-functions" class="hide">
+		cust-functions
+			<br>
+		<h2 style="color: blue;">create customer</h2>
+		<br> <input id="create-cust-id" placeholder="new cust ID" /> 
+		<input
+			id="create-cust-CUST_NAME" placeholder="new CUST_NAME" /> 
+			<input id="create-cust-PASSWORD"
+			placeholder="new cust password" />
+
+		<button onclick="createCustomer()">
+			<br> create customer!
+		</button>
+		<ul id="created-customer"></ul>
+		
+		
+		<hr>
+		<h2 style="color: blue;">show me all the coupons that i have purchased</h2>
+		<br> <input id="purchased-coupon-custID" placeholder="your customer ID" />
+		<button id="getPurchasedCoupon" class="button" onClick="getPurchasedCoupon()">Show
+			coupons that i have purchaed</button>	
+		<div id="purchased-coupon-list"></div>
+		<hr><br>
+
+		<h2 style="color: blue;">show me all the coupons that i have purchased by type</h2>
+		<br> <input id="purchased-coupon-by-type-custID" placeholder="your customer ID" />
+		<select
+			id="search-purchased-CouponType" name="CouponType">
+			<option id="search-purchased-CouponType-tech" value="tech">tech</option>
+			<option id="search-purchased-CouponType-food" value="food">food</option>
+			<option id="search-purchased-CouponType-entertainment" value="entertainment">entertainment</option>
+			<option id="search-purchased-CouponType-shooping" value="shooping">shooping</option>
+			<option id="search-purchased-CouponType-kids" value="kids">kids</option>
+		</select>
+		<button id="getPurchasedCouponByType" class="button" onClick="getPurchasedCouponByType()">Show
+			coupons that i have purchaed</button>	
+		<div id="purchased-coupon-by-type-list"></div>
+		
+		<hr><br>
+
+		<h2 style="color: blue;">show me all the coupons that i have purchased by price</h2>
+		<br> <input id="purchased-coupon-by-price-custID" placeholder="your customer ID" />
+		<input id="purchased-coupon-by-price-price" placeholder="price example: 1.1" />
+		
+		<button id="getPurchasedCouponByPrice" class="button" onClick="getPurchasedCouponByPrice()">Show
+			coupons that i have purchaed</button>	
+		<div id="purchased-coupon-by-price-list"></div>
+		<hr>
+		
+		<h2 style="color: blue;">show cust by id</h2>
+		<br> <input id="cust-id-input" placeholder="customer ID" />
+		<button id="showCust" class="button" onClick="getCustomer()">Show
+			cust by id</button>
+		<ul id="cust-by-id"></ul>
+		<br><hr>
+		
+		<h1>enter customer id to remove from system</h1>
+		<input id="custID-to-remove" placeholder=" customer ID" />
+
+		<button onclick="removeCustomer()">
+			<br> remove customer!
+		</button>
+		<hr>
+		
+		
+		<h2 style="color: blue;">update cust filed</h2>
+		<br>
+		<h2>enter the id of the cust that you want to change</h2>
+		<br> <input id="cust-id-input-to-update" placeholder="cust ID" />
+		<h2>select the filed you want to change</h2>
+		<select id="cust-filedToChange" name="type">
+			<option id="cust-id-update" value="companieID">custID</option>
+			<option id="cust-name-update" value="CUST_NAME">CUST_NAME</option>
+			<option id="cust-password-to-update" value="password">password</option>
+		</select> <br>
+		<h2>enter new value:</h2>
+		<input id="cust-filed-newValue" placeholder="new value" />
+		<button id="updaetCustomer" class="button" onClick="updaetCustomer()">update
+			customer</button>
+
+		<ul id="updated-cust"></ul>
+		
+		<hr><br>
+		<h2 style="color: blue;">purchase coupon</h2>
+		<br> <input id="couponID-to-purchase" placeholder="coupon ID" /> <input
+			id="custID-purchase" placeholder="your customer ID" />
+		<button id="purchase" class="button" onClick="purchase()">purchase!</button>
+		<ul id="coupon"></ul>
+		<br>
+		<hr>
+		
+		
+	</div>
+	
+</body>
+</html>

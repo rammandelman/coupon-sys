@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="windows-1255">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insert title here</title>
+
+
+<script src="reports.js">
+	</script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="NewCss.css" />
+
+</head>
+<body>
+	
+	<br><hr>	
+		<h2 style="color: blue;">show all incomes</h2>
+		<br>
+		<button id="getAllIncomes" class="button"
+			onClick="getAllIncomes()">Show all incomes</button>
+		<div id="all-incomes"></div>
+		
+		
+	<br><hr>	
+		<h2 style="color: blue;">show all incomes by cust name</h2>
+		<br>
+		<br> <input id="cust-reports-by-name" placeholder="cust name:" />
+		<button id="getAllIncomesByCustName" class="button"
+			onClick="getAllIncomesByCustName()">Show incomes</button>
+		<div id="all-incomes-by-cust-name"></div>
+		
+		<br><hr>	
+		<h2 style="color: blue;">show all incomes by comp name</h2>
+		<br>
+		<br> <input id="comp-reports-by-name" placeholder="comp name:" />
+		<button id="getAllIncomesByCompName" class="button"
+			onClick="getAllIncomesByCompName()">Show incomes</button>
+		<div id="all-incomes-by-comp-name"></div>
+		
+		
+</body>
+</html>
