@@ -39,7 +39,7 @@ public class CompanyDBDAO extends Client implements CompanyDAO {
 	/*
 	 * this object get the instance of connection pool
 	 */
-	ConnectionPool pool = ConnectionPool.getConnectionPool();
+	private ConnectionPool pool = ConnectionPool.getConnectionPool();
 	
 	@Override
 	public Companies createCompany(String companieID, String COMP_NAME, String EMAIL, String Password) throws NoFreeConnectionsException, WrongEntryException, CompanieNotFoundException,ConnectionClosingException, CompAllreadyExistException
@@ -54,9 +54,6 @@ public class CompanyDBDAO extends Client implements CompanyDAO {
 				throw new CompAllreadyExistException();
 			}
 			
-		}catch (CompAllreadyExistException e) {
-			// TODO: handle exception
-			throw new CompAllreadyExistException();
 		}catch (NullPointerException e) {
 			// TODO: handle exception
 			
